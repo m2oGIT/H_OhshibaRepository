@@ -19,11 +19,11 @@ public class Test02 {
    * （メソッド論理名：メイン） <br />
    * （説明：文字列をコンソールに表示する） <br />
    * 
-   * @param args
+   * @param args 起動時引数
    */
   public static void main( String[] args ) {
-    // TODO 自動生成されたメソッド・スタブ
-    System.out.println( "ようこそJava勉強会へ。\nこれは２つ目のJavaプログラムです。" );
+    System.out.println( "ようこそJava勉強会へ。" );
+    System.out.println( "これは２つ目のJavaプログラムです。" );
   }
 
 }

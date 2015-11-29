@@ -21,12 +21,13 @@ public class Test03 {
    * （メソッド論理名：メイン） <br />
    * （説明：文字列をコンソールに表示する） <br />
    * 
-   * @param args
+   * @param args 起動時引数
    */
   public static void main( String[] args ) {
-    // TODO 自動生成されたメソッド・スタブ
-    System.out
-        .println( "2015年11月01日(Sun)\nJavaの演習問題です。\neclipseで色々と試行錯誤しながら進めてみましょう。\nよろしくお願いします。" );
+    System.out.println( "2015年11月01日(Sun)" );
+    System.out.println( "Javaの演習問題です。" );
+    System.out.println( "eclipseで色々と試行錯誤しながら進めてみましょう。" );
+    System.out.println( "よろしくお願いします。" );
   }
 
 }

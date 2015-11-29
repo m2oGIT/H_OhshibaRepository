@@ -17,12 +17,10 @@ public class Test04 {
    * （メソッド論理名：メイン） <br />
    * （説明：起動時引数で与えた任意の文字列をコンソールに表示する） <br />
    * 
-   * @param args
+   * @param args 起動時引数
    */
   public static void main( String[] args ) {
-    // TODO 自動生成されたメソッド・スタブ
-    System.out
-        .println( args[0] );
+    System.out.println( args[0] );
   }
 
 }

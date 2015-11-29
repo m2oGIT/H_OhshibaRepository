@@ -16,7 +16,7 @@ class Test01 {
    * （メソッド論理名：メイン） <br />
    * （説明：文字列をコンソールに表示する） <br />
    * 
-   * @param args
+   * @param args 起動時引数
    */
   public static void main( String[] args ) {
     System.out.println( "Hello World!!" );
