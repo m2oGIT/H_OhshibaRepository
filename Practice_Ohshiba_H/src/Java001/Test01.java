@@ -12,6 +12,7 @@ package Java001;
  *         更新履歴 2015/11/21 （更新者：大柴仁志）：（説明：新規作成） <br />
  */
 class Test01 {
+
   /**
    * （メソッド論理名：メイン） <br />
    * （説明：文字列をコンソールに表示する） <br />
@@ -19,6 +20,7 @@ class Test01 {
    * @param args 起動時引数
    */
   public static void main( String[] args ) {
+    // 文字列をコンソールに表示
     System.out.println( "Hello World!!" );
   }
 }

@@ -22,6 +22,7 @@ public class Test02 {
    * @param args 起動時引数
    */
   public static void main( String[] args ) {
+    // 文字列（２行）をコンソールに表示
     System.out.println( "ようこそJava勉強会へ。" );
     System.out.println( "これは２つ目のJavaプログラムです。" );
   }

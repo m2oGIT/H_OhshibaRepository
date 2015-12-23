@@ -20,6 +20,7 @@ public class Test04 {
    * @param args 起動時引数
    */
   public static void main( String[] args ) {
+    // 起動時引数で与えた任意の文字列をコンソールに表示
     System.out.println( args[0] );
   }
 

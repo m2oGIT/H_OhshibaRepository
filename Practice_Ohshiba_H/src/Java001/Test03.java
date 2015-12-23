@@ -24,6 +24,7 @@ public class Test03 {
    * @param args 起動時引数
    */
   public static void main( String[] args ) {
+    // 文字列（４行）をコンソールに表示
     System.out.println( "2015年11月01日(Sun)" );
     System.out.println( "Javaの演習問題です。" );
     System.out.println( "eclipseで色々と試行錯誤しながら進めてみましょう。" );
