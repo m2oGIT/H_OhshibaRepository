@@ -19,15 +19,19 @@ class Test08 {
    * @param args 起動時引数
    */
   public static void main( String[] args ) {
+    // 累計値を初期化
     int sum = 0;
 
+    // 累計値に1から100までのうち奇数のみ加算
     for ( int i = 1; i <= 100; i++ ) {
-      if (i % 2 != 0) {
+      // 奇数判定
+      if ( i % 2 != 0 ) {
         sum += i;
       }
-      
+
     }
 
+    // 累計値をコンソールに表示
     System.out.println( "合計は" + sum + "です" );
   }
 }

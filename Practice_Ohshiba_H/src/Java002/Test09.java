@@ -19,14 +19,18 @@ class Test09 {
    * @param args 起動時引数
    */
   public static void main( String[] args ) {
+    // 累計値を初期化
     int sum = 0;
+    // 起動時引数を数値化
     int max = Integer.parseInt( args[0] );
 
+    // 累計値に1から起動時引数まで加算
     for ( int i = 1; i <= max; i++ ) {
       sum += i;
 
     }
 
+    // 累計値をコンソールに表示
     System.out.println( "合計は" + sum + "です" );
   }
 }
