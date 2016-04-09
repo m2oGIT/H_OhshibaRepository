@@ -1,13 +1,15 @@
-
-package Java005;
-
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-
 /**
  * Copyright 2015 EIS Co., Ltd. All rights reserved.
  */
+
+package Java005;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author （作成者：大柴仁志） <br />
@@ -22,13 +24,15 @@ class ArrayToCollectionTest {
    * （説明：コンソールへのメッセージ表示、コンソール入力処理および計算処理の実行） <br />
    * 
    * @param args 起動時引数
+   * @throws Exception コンソール入力が整数ではない。
    */
-  public static void main( String[] args ) {
+  public static void main( String[] args ) throws Exception {
     // コンソールの入力値
-    ArrayList<Integer> inputint = new ArrayList<Integer>();
+    // ArrayList<Integer> inputint = new ArrayList<Integer>();
+    List<Integer> inputint = new ArrayList<>();
     // int inputint[] = new int[5];
     // 計算結果
-    ArrayList<Integer> result;
+    List<BigDecimal> result;
     // int result[];
 
     // 入力要求メッセージの表示
@@ -50,9 +54,12 @@ class ArrayToCollectionTest {
       // System.out.println( "平均値は" + result[2] );
 
       // 例外処理
-    } catch ( Exception e ) {
+    } catch ( NumberFormatException e ) {
       // エラー時はメッセージを表示
       System.out.println( "整数ではありません。処理を終了します。" );
+    } catch ( IOException e ) {
+      // エラー時はメッセージを表示
+      System.out.println( "異常が発生しました。処理を終了します。" );
     }
   }
 
@@ -64,10 +71,10 @@ class ArrayToCollectionTest {
    * @return コンソールの入力値
    * @throws Exception コンソール入力が整数ではない。
    */
-  private static ArrayList<Integer> inputproc() throws Exception {
+  private static List<Integer> inputproc() throws Exception {
     // private static int[] inputproc() throws Exception {
     // コンソールの入力値
-    ArrayList<Integer> inputint = new ArrayList<Integer>();
+    List<Integer> inputint = new ArrayList<Integer>();
     // int inputint[] = new int[5];
 
     // 入力ストリームのインスタンスを仮で生成。
@@ -99,11 +106,12 @@ class ArrayToCollectionTest {
    * 
    * @param inputint コンソールの入力値
    * @return 計算結果（最大値、合計値、平均値）
+   * @throws Exception コンソール入力が整数ではない。
    */
-  private static ArrayList<Integer> calcproc( ArrayList<Integer> inputint ) throws Exception {
+  private static List<BigDecimal> calcproc( List<Integer> inputint ) throws Exception {
     // private static int[] calcproc( int inputint[] ) {
     // 計算結果（最大値、合計値、平均値）
-    ArrayList<Integer> result = new ArrayList<Integer>();
+    List<BigDecimal> result = new ArrayList<BigDecimal>();
     // int result[] = new int[3];
 
     for ( int i = 0; i < inputint.size(); i++ ) {
@@ -111,26 +119,26 @@ class ArrayToCollectionTest {
 
       // 最大値の判定
       if ( i == 0 ) {
-        result.add( inputint.get( i ) );
+        result.add( BigDecimal.valueOf( inputint.get( i ) ) );
         // result[0] = inputint[i];
-      } else if ( result.get( 0 ) < inputint.get( i ) ) {
+      } else if ( result.get( 0 ).compareTo( BigDecimal.valueOf( inputint.get( i ) ) ) < 0 ) {
         // } else if ( result[0] < inputint[i] ) {
-        result.set( 0, inputint.get( i ) );
+        result.set( 0, BigDecimal.valueOf( inputint.get( i ) ) );
         // result[0] = inputint[i];
       }
 
       // コンソール入力値を累計
       if ( i == 0 ) {
-        result.add( inputint.get( i ) );
+        result.add( BigDecimal.valueOf( inputint.get( i ) ) );
       } else {
-        result.set( 1, result.get( 1 ) + inputint.get( i ) );
+        result.set( 1, result.get( 1 ).add( BigDecimal.valueOf( inputint.get( i ) ) ) );
         // result[1] += inputint[i];
       }
     }
 
     // 合計値から平均値を算出
-    result.add( result.get( 1 ) / 5 );
-    // result[2] = result[1] / 5;
+    result.add( result.get( 1 ).divide( new BigDecimal( "5" ), 3, BigDecimal.ROUND_HALF_UP ) );
+    // result[2] = result[1].divide( new BigDecimal( "5" ), 3, BigDecimal.ROUND_HALF_UP );
 
     return result;
   }
