@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 入力された複数人の身長について、標準体重を表示処理(Web_001．問２の解答) ブラウザから入力値を1つ取り、複数人の身長を読み込み、標準体重を表示して下さい。
+ * 入力された複数人の身長について、標準体重を表示処理(Web_001．問２の解答) <br/>
+ * ブラウザから入力値を1つ取り、複数人の身長を読み込み、標準体重を表示する<br/>
  *
  * @author EIS 大柴仁志<br/>
  *         更新履歴<br/>
@@ -66,6 +67,10 @@ public class Servlet_002 extends HttpServlet {
       // 入力された身長の人数分を繰り返し処理
       for ( int i = 0; i < strHeight.length; i++ ) {
 
+        // 入力された身長を標準出力する
+        System.out.print( "身長：" );
+        System.out.println( strHeight[i] );
+
         // 入力された身長を整数に変換
         int intHeight = Integer.parseInt( strHeight[i] );
 
@@ -74,28 +79,29 @@ public class Servlet_002 extends HttpServlet {
 
           // 標準体重算出
           double dblWeight = (intHeight - 100 ) * 0.9;
+
+          // 標準体重をブラウザに表示
           pw.print( dblWeight );
+          pw.println( "</br>" );
+
+          // 標準体重を標準出力する
+          System.out.print( "標準体重：" );
+          System.out.println( dblWeight );
+
         } else {
-          pw.println( "身長が100以下のため標準体重が算出できませんでした。" );
+          // 標準体重算出エラー時はメッセージを表示
+          pw.println( "身長が100以下のため標準体重が算出できませんでした。</br>" );
+          System.out.print( "標準体重：" );
+          System.out.println(  "身長が100以下のため標準体重が算出できませんでした。" );
         }
       }
     } catch ( NumberFormatException e ) {
-      // エラー時はメッセージを表示
-      pw.println( "入力値１がカンマ区切りの整数ではありません。" );
+      // 整数化エラー時はメッセージを表示
+      pw.println( "入力値１が整数ではありません。処理を中断します。" );
     }
 
     pw.println( "</body>" );
     pw.println( "</html>" );
-
-    // 入力された身長を標準出力する
-    System.out.print( "身長：" );
-
-    for ( int i = 0; i < strHeight.length; i++ ) {
-      System.out.println( "strHeight[" + i + "]：" + strHeight[i] );
-    }
-
-    // 標準体重を標準出力する
-    System.out.print( "標準体重：" );
 
   }
 
