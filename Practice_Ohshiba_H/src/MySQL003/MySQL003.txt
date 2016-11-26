@@ -1,0 +1,50 @@
+Setting environment for MariaDB 10.1 (x64)
+
+C:\WINDOWS\System32>mysql -u root -p
+Enter password: ****
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.1.14-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> \. C:\Tools\Script_001.sql
+Query OK, 0 rows affected (0.30 sec)
+
+MariaDB [(none)]> \. C:\Tools\Script_002.sql
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [(none)]> \. C:\Tools\Script_003.sql
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [(none)]> \. C:\Tools\Script_004.sql
+Query OK, 3 rows affected (0.03 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+MariaDB [(none)]> \. C:\Tools\Script_005.sql
+ERROR 1064 (42000) at line 1 in file: 'C:\Tools\Script_005.sql': You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+Query OK, 3 rows affected (0.98 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Query OK, 3 rows affected (0.60 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [(none)]> \. C:\Tools\Script_005.sql
+Query OK, 3 rows affected (0.55 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [(none)]>

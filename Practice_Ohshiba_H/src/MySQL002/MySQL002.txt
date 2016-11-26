@@ -1,0 +1,85 @@
+Setting environment for MariaDB 10.1 (x64)
+
+C:\WINDOWS\System32>mysql -u root -p
+Enter password: ****
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 14
+Server version: 10.1.14-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> INSERT INTO moeiwast_eiwatest_DB01.test_table (INT_NUM, NAME_STR, DBL_NUM, CREATE_DATE) VALUES ( 44444, '‚¨‚¨‚µ‚Î', 48.1104, '2017-01-01');
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [(none)]> SELECT * FROM moeiwast_eiwatest_DB01.test_table;
++---------+----------------------+---------+-------------+
+| INT_NUM | NAME_STR             | DBL_NUM | CREATE_DATE |
++---------+----------------------+---------+-------------+
+|       1 | ƒeƒXƒg‘¾˜Y           | 123.456 | 2010-01-01  |
+|       2 | ‚`‚a‚b‚c‚d‚e‚f       |   0.456 | 2013-02-02  |
+|       3 | ABCDEFG              | 999.999 | 2015-03-03  |
+|       4 | ‚P‚Q‚R‚S‚T‚U‚V‚W‚X‚O |    NULL | 2015-04-04  |
+|   44444 | ‚¨‚¨‚µ‚Î             |  48.110 | 2017-01-01  |
+|   99999 | 1234567890           |   0.000 | 2016-05-05  |
++---------+----------------------+---------+-------------+
+6 rows in set (0.00 sec)
+
+MariaDB [(none)]> SELECT * FROM moeiwast_eiwatest_DB01.test_table WHERE INT_NUM = 44444;
++---------+----------+---------+-------------+
+| INT_NUM | NAME_STR | DBL_NUM | CREATE_DATE |
++---------+----------+---------+-------------+
+|   44444 | ‚¨‚¨‚µ‚Î |  48.110 | 2017-01-01  |
++---------+----------+---------+-------------+
+1 row in set (0.00 sec)
+
+MariaDB [(none)]> UPDATE moeiwast_eiwatest_DB01.test_table SET CREATE_DATE = '2016/07/23' WHERE INT_NUM = 44444;
+Query OK, 1 row affected (0.34 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [(none)]> SELECT * FROM moeiwast_eiwatest_DB01.test_table;
++---------+----------------------+---------+-------------+
+| INT_NUM | NAME_STR             | DBL_NUM | CREATE_DATE |
++---------+----------------------+---------+-------------+
+|       1 | ƒeƒXƒg‘¾˜Y           | 123.456 | 2010-01-01  |
+|       2 | ‚`‚a‚b‚c‚d‚e‚f       |   0.456 | 2013-02-02  |
+|       3 | ABCDEFG              | 999.999 | 2015-03-03  |
+|       4 | ‚P‚Q‚R‚S‚T‚U‚V‚W‚X‚O |    NULL | 2015-04-04  |
+|   44444 | ‚¨‚¨‚µ‚Î             |  48.110 | 2016-07-23  |
+|   99999 | 1234567890           |   0.000 | 2016-05-05  |
++---------+----------------------+---------+-------------+
+6 rows in set (0.00 sec)
+
+MariaDB [(none)]> \. C:\Tools\Script_001.sql
+Query OK, 1 row affected (0.36 sec)
+
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+ERROR 1046 (3D000) at line 3 in file: 'C:\Tools\Script_001.sql': No database selected
+MariaDB [(none)]> DELETE moeiwast_eiwatest_DB01.test_table WHERE INT_NUM = 55555;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE INT_NUM = 55555' at line 1
+MariaDB [(none)]> DELETE FROM moeiwast_eiwatest_DB01.test_table WHERE INT_NUM = 55555;
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [(none)]> \. C:\Tools\Script_001.sql
+Query OK, 1 row affected (0.05 sec)
+
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
++---------+----------------------+---------+-------------+
+| INT_NUM | NAME_STR             | DBL_NUM | CREATE_DATE |
++---------+----------------------+---------+-------------+
+|   55555 | ‘åŽÄ                 |  12.121 | 2087-12-31  |
+|   44444 | ‚¨‚¨‚µ‚Î             |  48.110 | 2016-07-23  |
+|   99999 | 1234567890           |   0.000 | 2016-05-05  |
+|       4 | ‚P‚Q‚R‚S‚T‚U‚V‚W‚X‚O |    NULL | 2015-04-04  |
+|       3 | ABCDEFG              | 999.999 | 2015-03-03  |
+|       2 | ‚`‚a‚b‚c‚d‚e‚f       |   0.456 | 2013-02-02  |
+|       1 | ƒeƒXƒg‘¾˜Y           | 123.456 | 2010-01-01  |
++---------+----------------------+---------+-------------+
+7 rows in set (0.02 sec)
+
+MariaDB [(none)]>

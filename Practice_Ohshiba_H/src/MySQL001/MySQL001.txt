@@ -1,0 +1,96 @@
+Setting environment for MariaDB 10.1 (x64)
+
+C:\WINDOWS\System32>mysql -u root -p
+Enter password: ****
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 7
+Server version: 10.1.14-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE moeiwast_eiwatest_DB01;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> CREATE TABLE moeiwast_eiwatest_DB01.test_table(INT_NUM BIGINT(5), NAME_STR VARCHAR(40), DBL_NUM DOUBLE(6,3), CREATE_DATE DATE, PRIMARY KEY(INT_NUM,NAME_STR)) CHARACTER SET sjis;
+Query OK, 0 rows affected (0.36 sec)
+
+MariaDB [(none)]> \. C:\Tools\InsertTest.sql
+Query OK, 1 row affected (0.38 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+Query OK, 1 row affected (0.06 sec)
+
+Query OK, 1 row affected (0.06 sec)
+
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [(none)]> \u moeiwast_eiwatest_DB01
+Database changed
+MariaDB [moeiwast_eiwatest_DB01]> SELECT * FROM moeiwast_eiwatest_DB01;
+ERROR 1146 (42S02): Table 'moeiwast_eiwatest_db01.moeiwast_eiwatest_db01' doesn't exist
+MariaDB [moeiwast_eiwatest_DB01]> SELECT * FROM test_table;
++---------+----------------------+---------+-------------+
+| INT_NUM | NAME_STR             | DBL_NUM | CREATE_DATE |
++---------+----------------------+---------+-------------+
+|       1 | ƒeƒXƒg‘¾˜Y           | 123.456 | 2010-01-01  |
+|       2 | ‚`‚a‚b‚c‚d‚e‚f       |   0.456 | 2013-02-02  |
+|       3 | ABCDEFG              | 999.999 | 2015-03-03  |
+|       4 | ‚P‚Q‚R‚S‚T‚U‚V‚W‚X‚O |    NULL | 2015-04-04  |
+|   99999 | 1234567890           |   0.000 | 2016-05-05  |
++---------+----------------------+---------+-------------+
+5 rows in set (0.00 sec)
+
+MariaDB [moeiwast_eiwatest_DB01]> ALTER TABLE test_table;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [moeiwast_eiwatest_DB01]> SHOW test_table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'test_table' at line 1
+MariaDB [moeiwast_eiwatest_DB01]> SHOW TABLE test_table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'test_table' at line 1
+MariaDB [moeiwast_eiwatest_DB01]> DESC test_table;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| INT_NUM     | bigint(5)   | NO   | PRI | NULL    |       |
+| NAME_STR    | varchar(40) | NO   | PRI | NULL    |       |
+| DBL_NUM     | double(6,3) | YES  |     | NULL    |       |
+| CREATE_DATE | date        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+MariaDB [moeiwast_eiwatest_DB01]> SELECT * FROM test_table WHERE CREATE_DATE BEETWEEN 2015/1/1 AND 2015/12/31 ORDER BY CREATE_DATE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'BEETWEEN 2015/1/1 AND 2015/12/31 ORDER BY CREATE_DATE' at line 1
+MariaDB [moeiwast_eiwatest_DB01]> SELECT * FROM test_table WHERE CREATE_DATE >= '2015-01-01' AND CREATE_DATE <= '2015-12-31' ORDER BY CREATE_DATE;
++---------+----------------------+---------+-------------+
+| INT_NUM | NAME_STR             | DBL_NUM | CREATE_DATE |
++---------+----------------------+---------+-------------+
+|       3 | ABCDEFG              | 999.999 | 2015-03-03  |
+|       4 | ‚P‚Q‚R‚S‚T‚U‚V‚W‚X‚O |    NULL | 2015-04-04  |
++---------+----------------------+---------+-------------+
+2 rows in set (0.00 sec)
+
+MariaDB [moeiwast_eiwatest_DB01]> SELECT * FROM test_table WHERE CREATE_DATE LIKE '2015%' ORDER BY CREATE_DATE;
++---------+----------------------+---------+-------------+
+| INT_NUM | NAME_STR             | DBL_NUM | CREATE_DATE |
++---------+----------------------+---------+-------------+
+|       3 | ABCDEFG              | 999.999 | 2015-03-03  |
+|       4 | ‚P‚Q‚R‚S‚T‚U‚V‚W‚X‚O |    NULL | 2015-04-04  |
++---------+----------------------+---------+-------------+
+2 rows in set (0.00 sec)
+
+MariaDB [moeiwast_eiwatest_DB01]> SELECT * FROM test_table WHERE CREATE_DATE BEETWEEN '2015-01-01' AND '2015-12-31' ORDER BY CREATE_DATE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'BEETWEEN '2015-01-01' AND '2015-12-31' ORDER BY CREATE_DATE' at line 1
+MariaDB [moeiwast_eiwatest_DB01]> SELECT * FROM test_table WHERE CREATE_DATE BETWEEN '2015-01-01' AND '2015-12-31' ORDER BY CREATE_DATE;
++---------+----------------------+---------+-------------+
+| INT_NUM | NAME_STR             | DBL_NUM | CREATE_DATE |
++---------+----------------------+---------+-------------+
+|       3 | ABCDEFG              | 999.999 | 2015-03-03  |
+|       4 | ‚P‚Q‚R‚S‚T‚U‚V‚W‚X‚O |    NULL | 2015-04-04  |
++---------+----------------------+---------+-------------+
+2 rows in set (0.00 sec)
+
+MariaDB [moeiwast_eiwatest_DB01]>
