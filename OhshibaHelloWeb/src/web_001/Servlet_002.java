@@ -78,21 +78,23 @@ public class Servlet_002 extends HttpServlet {
         if ( intHeight > 100 ) {
 
           // 標準体重算出
-          double dblWeight = (intHeight - 100 ) * 0.9;
+          double dblWeight = ( intHeight - 100 ) * 0.9;
 
           // 標準体重をブラウザに表示
-          pw.print( dblWeight );
+          // pw.print( dblWeight );
+          pw.printf( "%.5f", dblWeight );
           pw.println( "</br>" );
 
           // 標準体重を標準出力する
           System.out.print( "標準体重：" );
-          System.out.println( dblWeight );
+          // System.out.println( dblWeight n);
+          System.out.printf( "%.5f%n", dblWeight );
 
         } else {
           // 標準体重算出エラー時はメッセージを表示
           pw.println( "身長が100以下のため標準体重が算出できませんでした。</br>" );
           System.out.print( "標準体重：" );
-          System.out.println(  "身長が100以下のため標準体重が算出できませんでした。" );
+          System.out.println( "身長が100以下のため標準体重が算出できませんでした。" );
         }
       }
     } catch ( NumberFormatException e ) {
